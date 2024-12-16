@@ -1,3 +1,16 @@
 body {
+  background-color: cornflowerblue;
+}
+h1{
+  color: white;
+  font-size: 300%;
+}
+img{
+  width: 30%;
+  border-radius: 60%;
 
+}
+img:hover {
+  border: dotted pink 8px;
+  width: 60%;
 }
