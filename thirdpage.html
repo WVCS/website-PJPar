@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code For This Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: cornflowerblue;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .code-editor {
+            margin: 10px 0;
+            width: 80%;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .page-selector {
+            margin-bottom: 20px;
+        }
+        .page-selector button {
+            margin: 0 5px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .page-selector button.active {
+            background-color: #0056b3;
+        }
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+        h1 {
+            color: white;
+            font-size: 300%;
+        }
+        img {
+            width: 30%;
+            border-radius: 60%;
+        }
+        img:hover {
+            border: dotted pink 8px;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Code For This Website</h1>
+    </header>
+    <main>
+            <!-- Navigation Bar -->
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="secondpage.html">My Projects</a>
+        <a href="thirdpage.html">The Code</a>
+    </div>
+        <div class="page-selector">
+            <button onclick="selectPage(1)" id="page1" class="active">Page 1</button>
+            <button onclick="selectPage(2)" id="page2">Page 2</button>
+            <button onclick="selectPage(3)" id="page3">Page 3</button>
+        </div>
+
+        <div class="code-editor" id="html-editor">
+            <label for="html-code">HTML Code:</label>
+            <textarea id="html-code" placeholder="Enter your HTML code here..."><html>
+  <head> <link rel="stylesheet" href="style.css">
+    <title> Parker's Website </title>
+ <div class="topnav">
+  <a href="index.html">Home</a>
+  <a href="secondpage.html">My Projects</a>
+  <a href="thirdpage.html">The Code</a>
+ </div>
+  </head>
+  <body>
+    <center>
+    <h1> Parker McDevitt's Webstie </h1>
+  
+      <img 
+           src="https://i.ytimg.com/vi/izBo01nSDJw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCrl38sAxl3ZWLTMhV67nbOIQS_ag">
+  </body>
+</html></textarea>
+        </div>
+
+        <div class="code-editor" id="css-editor">
+            <label for="css-code">CSS Code:</label>
+            <textarea id="css-code" placeholder="Enter your CSS code here...">body {
+  background-color: cornflowerblue;
+}
+h1{
+  color: white;
+  font-size: 300%;
+}
+img{
+  width: 30%;
+  border-radius: 60%;
+
+}
+img:hover {
+  border: dotted pink 8px;
+  width: 60%;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}</textarea>
+        </div>
+    </main>
+
+    <script>
+        function selectPage(pageNumber) {
+            // Reset active class on buttons
+            document.querySelectorAll('.page-selector button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Set active class on selected button
+            document.getElementById(`page${pageNumber}`).classList.add('active');
+
+            // Update editors for selected page (could be expanded to store different content for each page)
+            if (pageNumber === 1) {
+                document.getElementById('html-code').value = `<html>\n  <head> <link rel=\"stylesheet\" href=\"style.css\">\n    <title> Parker's Website </title>\n <div class=\"topnav\">\n  <a href=\"index.html\">Home</a>\n  <a href=\"secondpage.html\">My Projects</a>\n </div>\n  </head>\n  <body>\n    <center>\n    <h1> Parker McDevitt's Webstie </h1>\n  \n      <img \n           src=\"https://i.ytimg.com/vi/izBo01nSDJw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCrl38sAxl3ZWLTMhV67nbOIQS_ag\">\n  </body>\n</html>`;
+                document.getElementById('css-code').value = "/* CSS for Page 1 */\n";
+            } else if (pageNumber === 2) {
+                document.getElementById('html-code').value = `<html>\n  <head> <link rel=\"stylesheet\" href=\"style.css\">\n    <title> Parker's Projects </title>\n <div class=\"topnav\">\n  <a href=\"index.html\">Home</a>\n  <a href=\"secondpage.html\">My Projects</a>\n</div>\n  </head>\n  \n  <body>\n    <center>\n    <h1> Parker's Coding Projects </h1>\n  \n    <iframe width=\"392\" height=\"620\" style=\"border: 0px;\" src=\"https://studio.code.org/projects/applab/pM4ftwwv37_oFz6nUMVpCJtY7Q6CDUAsuQbVA56zTuc/embed\"></iframe>\n    <iframe width=\"392\" height=\"620\" style=\"border: 0px;\" src=\"https://studio.code.org/projects/applab/WbqJlMjLOdU6hBkCzyO6Icq6anRQQVANyBm92ggEBlQ/embed\"></iframe>\n    <iframe width=\"392\" height=\"620\" style=\"border: 0px;\" src=\"https://studio.code.org/projects/applab/jtaDg3S9qH9nwn9ThC0RCrtthj8SssJUY7Wyoz6l1DA/embed\"></iframe>\n      <iframe src=\"https://scratch.mit.edu/projects/1058831115/embed\" allowtransparency=\"true\" width=\"485\" height=\"402\" frameborder=\"0\" scrolling=\"no\" allowfullscreen></iframe>\n  </body>\n</html>`;
+                document.getElementById('css-code').value = 
+"<style>body { \n background-color: cornflowerblue; \n } \n h1{ \n color: white; \n font-size: 300%; \n } \n img{ \n width: 30%; \n border-radius: 60%; \n } \n img:hover { \n border: dotted pink 8px; \n width: 60%; \n } \n /* Add a black background color to the top navigation */ \n .topnav { \n background-color: #333; \n overflow: hidden; \n } \n /* Style the links inside the navigation bar */ \n .topnav a { \n float: left; \n color: #f2f2f2; \n text-align: center; \n padding: 14px 16px; \n text-decoration: none; \n font-size: 17px; \n } \n /* Change the color of links on hover */ \n .topnav a:hover { \n background-color: #ddd; \n color: black; \n } \n /* Add a color to the active/current link */ \n .topnav a.active { \n background-color: #04AA6D; \n color: white; \n }</style>"
+;
+            } else {
+                document.getElementById('html-code').value = `<!DOCTYPE html> \n
+<html lang="en"> \n
+<head> \n
+<meta charset="UTF-8"> \n
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> \n
+<title>Code For This Website</title> \n
+<style> \n
+body { \n
+  font-family: Arial, sans-serif; \n
+  margin: 0; \n
+  padding: 0; \n
+  background-color: cornflowerblue; \n
+} \n
+header { \n
+  background: #333; \n
+  color: white; \n
+  padding: 1rem; \n
+  text-align: center; \n
+} \n
+main { \n
+  display: flex; \n
+  flex-direction: column; \n
+  align-items: center; \n
+  margin: 20px; \n
+} \n
+.code-editor { \n
+  margin: 10px 0; \n
+  width: 80%; \n
+} \n
+textarea { \n
+  width: 100%; \n
+  height: 200px; \n
+  font-family: monospace; \n
+  font-size: 14px; \n
+  margin-top: 5px; \n
+} \n
+.page-selector { \n
+  margin-bottom: 20px; \n
+} \n
+.page-selector button { \n
+  margin: 0 5px; \n
+  padding: 10px; \n
+  background-color: #007BFF; \n
+  color: white; \n
+  border: none; \n
+  border-radius: 5px; \n
+  cursor: pointer; \n
+} \n
+.page-selector button.active { \n
+  background-color: #0056b3; \n
+} \n
+.topnav { \n
+  background-color: #333; \n
+  overflow: hidden; \n
+} \n
+.topnav a { \n
+  float: left; \n
+  color: #f2f2f2; \n
+  text-align: center; \n
+  padding: 14px 16px; \n
+  text-decoration: none; \n
+  font-size: 17px; \n
+} \n
+.topnav a:hover { \n
+  background-color: #ddd; \n
+  color: black; \n
+} \n
+.topnav a.active { \n
+  background-color: #04AA6D; \n
+  color: white; \n
+} \n
+h1 { \n
+  color: white; \n
+  font-size: 300%; \n
+} \n
+img { \n
+  width: 30%; \n
+  border-radius: 60%; \n
+} \n
+img:hover { \n
+  border: dotted pink 8px; \n
+  width: 60%; \n
+} \n
+</style> \n
+</head> \n
+<body> \n
+<header> \n
+  <h1>Code For This Website</h1> \n
+</header> \n
+<main> \n
+  <div class="topnav"> \n
+    <a href="#">Home</a> \n
+    <a href="#">My Projects</a> \n
+    <a href="#">Contact</a> \n
+  </div> \n
+  <div class="page-selector"> \n
+    <button onclick="selectPage(1)" id="page1" class="active">Page 1</button> \n
+    <button onclick="selectPage(2)" id="page2">Page 2</button> \n
+    <button onclick="selectPage(3)" id="page3">Page 3</button> \n
+  </div> \n
+  <div class="code-editor" id="html-editor"> \n
+    <label for="html-code">HTML Code:</label> \n
+    <textarea id="html-code" placeholder="Enter your HTML code here..."><html> \n
+    <head> <link rel="stylesheet" href="style.css"> \n
+    <title> Parker's Website </title> \n
+    <div class="topnav"> \n
+      <a href="index.html">Home</a> \n
+      <a href="secondpage.html">My Projects</a> \n
+    </div> \n
+    </head> \n
+    <body> \n
+      <center> \n
+      <h1> Parker McDevitt's Webstie </h1> \n
+      <img \n
+      src="https://i.ytimg.com/vi/izBo01nSDJw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCrl38sAxl3ZWLTMhV67nbOIQS_ag"> \n
+      </body> \n
+    </html></textarea> \n
+  </div> \n
+  <div class="code-editor" id="css-editor"> \n
+    <label for="css-code">CSS Code:</label> \n
+    <textarea id="css-code" placeholder="Enter your CSS code here...">body { \n
+    background-color: cornflowerblue; \n
+    } \n
+    h1{ \n
+    color: white; \n
+    font-size: 300%; \n
+    } \n
+    img{ \n
+    width: 30%; \n
+    border-radius: 60%; \n
+    } \n
+    img:hover { \n
+    border: dotted pink 8px; \n
+    width: 60%; \n
+    } \n
+    /* Add a black background color to the top navigation */ \n
+    .topnav { \n
+    background-color: #333; \n
+    overflow: hidden; \n
+    } \n
+    /* Style the links inside the navigation bar */ \n
+    .topnav a { \n
+    float: left; \n
+    color: #f2f2f2; \n
+    text-align: center; \n
+    padding: 14px 16px; \n
+    text-decoration: none; \n
+    font-size: 17px; \n
+    } \n
+    /* Change the color of links on hover */ \n
+    .topnav a:hover { \n
+    background-color: #ddd; \n
+    color: black; \n
+    } \n
+    /* Add a color to the active/current link */ \n
+    .topnav a.active { \n
+    background-color: #04AA6D; \n
+    color: white; \n
+    }</textarea> \n
+  </div> \n
+</main> \n
+<script> \n
+function selectPage(pageNumber) { \n
+  // Reset active class on buttons \n
+  document.querySelectorAll('.page-selector button').forEach(button => { \n
+    button.classList.remove('active'); \n
+  }); \n
+  // Set active class on selected button \n
+  document.getElementById(\`page\${pageNumber}\`).classList.add('active'); \n
+  // Update editors for selected page (could be expanded to store different content for each page) \n
+  if (pageNumber === 1) { \n
+    document.getElementById('html-code').value = \`<html>\\n
+    <head> <link rel="stylesheet" href="style.css">\\n
+    <title> Parker's Website </title>\\n
+    <div class="topnav">\\n
+    <a href="index.html">Home</a>\\n
+    <a href="secondpage.html">My Projects</a>\\n
+    </div>\\n
+    </head>\\n
+    <body>\\n
+    <center>\\n
+    <h1> Parker McDevitt's Webstie </h1>\\n
+    <img src="https://i.ytimg.com/vi/izBo01nSDJw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCrl38sAxl3ZWLTMhV67nbOIQS_ag">\\n
+    </body>\\n
+    </html>\`; \n
+    document.getElementById('css-code').value = "/* CSS for Page 1 */\\n"; \n
+  } else if (pageNumber === 2) { \n
+    document.getElementById('html-code').value = \`<html>\\n
+    <head> <link rel="stylesheet" href="style.css">\\n
+    <title> Parker's Projects </title>\\n
+    <div class="topnav">\\n
+    <a href="index.html">Home</a>\\n
+    <a href="secondpage.html">My Projects</a>\\n
+    </div>\\n
+    </head>\\n
+    <body>\\n
+    <center>\\n
+    <h1> Parker's Coding Projects </h1>\\n
+    <iframe width="392" height="620" style="border: 0px;" src="https://studio.code.org/projects/applab/pM4ftwwv37_oFz6nUMVpCJtY7Q6CDUAsuQbVA56zTuc/embed"></iframe>\\n
+    <iframe width="392" height="620" style="border: 0px;" src="https://studio.code.org/projects/applab/WbqJlMjLOdU6hBkCzyO6Icq6anRQQVANyBm92ggEBlQ/embed"></iframe>\\n
+    </body>\\n
+    </html>\`; \n
+    document.getElementById('css-code').value = "<style>body {\\n background-color: cornflowerblue;\\n }\\n h1{\\n color: white;\\n font-size: 300%;\\n }</style>"; \n
+  } else { \n
+    document.getElementById('html-code').value = ""; \n
+    document.getElementById('css-code').value = "<style>body {\\n background-color: cornflowerblue;\\n }\\n h1{\\n color: white;\\n font-size: 300%;\\n }</style>"; \n
+  } \n
+} \n 
+`;
+
+                document.getElementById('css-code').value = "<style>body { \n background-color: cornflowerblue; \n } \n h1{ \n color: white; \n font-size: 300%; \n } \n img{ \n width: 30%; \n border-radius: 60%; \n } \n img:hover { \n border: dotted pink 8px; \n width: 60%; \n } \n /* Add a black background color to the top navigation */ \n .topnav { \n background-color: #333; \n overflow: hidden; \n } \n /* Style the links inside the navigation bar */ \n .topnav a { \n float: left; \n color: #f2f2f2; \n text-align: center; \n padding: 14px 16px; \n text-decoration: none; \n font-size: 17px; \n } \n /* Change the color of links on hover */ \n .topnav a:hover { \n background-color: #ddd; \n color: black; \n } \n /* Add a color to the active/current link */ \n .topnav a.active { \n background-color: #04AA6D; \n color: white; \n }</style>";
+            }
+        }
+    </script>
+</body>
+</html>
